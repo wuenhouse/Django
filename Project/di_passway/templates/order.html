@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="//rawgithub.com/darthwade/angular-loading/master/angular-loading.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/1.2.7/spin.min.js"></script>
+    <script src="//rawgithub.com/darthwade/angular-loading/master/angular-loading.min.js"></script>
+    <script src="/static/js/home.js"></script>
+    <script src='/static/js/moment.min.js'></script>
+    <script src="/static/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-datepicker.min.css" />
+</head>
+<body id='bd1' ng-controller="MainCtrl as m" ng-app='myApp'>
+    <div class='menu2'>
+        <div>
+            <button type="button" class="btn btn-default icon_btn" ng-click='m.clk(1)'><span class='glyphicon glyphicon-plus'></span></button>
+            <!--button type="button" class="btn btn-default icon_btn" ng-click='m.clk(2)'><span class='glyphicon glyphicon-user'></span></button>
+            <button type="button" class="btn btn-default icon_btn" ng-click='m.clk(3)'><span class='glyphicon glyphicon-list-alt'></span></button>
+            <button type="button" class="btn btn-default icon_btn" ng-click='m.clk(4)'><span class='glyphicon glyphicon-calendar'></span></button-->
+            <button type="button" class="btn btn-default icon_btn" ng-click='m.clk(5)'><span class='glyphicon glyphicon-inbox'></span></button>
+        </div>
+        <H2><span class='text-white text__--l5px'>Task Name</span></H2>
+        <div><input type='text' class='input input-name__wd50p input-name__l5px' placeholder="enter the list name in thinker" ng-model='m.listname'></input></div>
+        <div class='table-left__5px' ng-show='m.panelshows[0].show'>
+            <H2><span class='text-white'>DataBase Select</span></H2>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span ng-bind='m.btn1_msg'></span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat='item in m.databaselist'><a href="#" data-ng-click="src_sel(item)"><span ng-bind='item.type_name'></span></a></li>
+                </ul>
+            </div>
+            <div class='seperate-bar__div--20ht'></div>
+            <H2><span class='text-white'>Select Client</span></H2>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span ng-bind='m.btn2_msg'></span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li ng-repeat='item in m.clients'><a href="#" data-ng-click="cli_sel(item)"><span ng-bind='item.company_name'></span></a></li>
+                </ul>
+            </div>
+            <div class='seperate-bar__div--20ht'></div>          
+            <H2><span class='text-white'>Select Target</span></H2>
+            <div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span ng-bind='m.btn3_msg'></span><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat='item in m.servers'><a href="#" data-ng-click="host_sel(item)"><span ng-bind='item.svr_name'></span></a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span ng-bind='m.btn4_msg'></span><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat='item in m.cli'><a href="#" data-ng-click="target_sel(item)"><span ng-bind='item.client_name'></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class='seperate-bar__div--20ht'></div>
+            <H2><span class='text-white'>Select Schedule</span></H2>
+            <div>
+                <table class='table table-bordered table-left__5px wp-70'>
+                    <tr>
+                        <td class='text-white' colspan='2'>Notification Email</td><td colspan='2'><input type='text' placeholder="多個請用分號分隔" ng-model='m.emails' class='txt__mail--wp100' /></td>
+                    </tr>
+                    <tr class='text-white'>
+                        <td colspan='2'><input type="radio" ng-model="m.schedule.mode" value="0" ng-change='m.test()'><span class='table-radio__upr--5px'>One Time</span></td>
+                        <td colspan='2'><input type="radio" ng-model="m.schedule.mode" value="1" ng-change='m.test()'><span class='table-radio__left--5px'>Schedule</span></td>
+                    </tr>
+                    <tr ng-show='m.datepicker'>
+                        <td class='text-white'><h5><span class='text__--r5px'>Select Start Date</span></h5></td>
+                        <td>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" id='txt_start' class="form-control">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </input>
+                            </div>
+                        </td>
+                        <td class='text-white'><h5><span style='margin-right:5px'>Select End Date</span></h5></td>
+                        <td>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" id='txt_end' class="form-control">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </input>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class='seperate-bar__div--20ht'></div>
+            <button class='btn btn-primary' ng-click='m.save_check()'>Check Infomation</button>
+        </div>
+        <div>
+            <table class='table table-bordered table-checkform' ng-show='m.result_show'>
+                <h4><caption class='text-white'> Sending Infomation Check</caption></h4>
+                <tr>
+                    <td>host</td><td><span ng-bind='m.btn1_msg'></span></td>
+                </tr>
+                <tr>
+                    <td>client</td><td><span ng-bind='m.btn2_msg'></span></td>
+                </tr>
+                <tr>
+                    <td>target</td><td><span ng-bind='m.btn3_msg'></span></td>
+                </tr>
+                <tr>
+                    <td>target client</td><td><span ng-bind='m.btn4_msg'></span></td>
+                </tr>
+                <tr>
+                    <td>date</td><td><span ng-bind='m.start'></span>~<span ng-bind='m.end'>~</span></td>
+                </tr>
+                <tr>
+                    <td colspan=2><button class='btn btn-primary' ng-click='m.new()'>Submit</button></td>
+                </tr>
+            </table>
+        </div>
+        <div ng-show='m.panelshows[4].show' class='wp-90'>
+            <H2><span class='text-white'>Schedule List</span></H2>
+            <div class='search-bar__div--white'>
+                <input class='input search-bar__input--70wp' placeholder="enter any words you want to filer" ng-model='m.filter'></input>
+            </div>
+            <table class='table table-checkform__all'>
+                <thead>
+                    <tr>
+                        <th>CreateDate <span ng-class="{'glyphicon-chevron-down' : m.sortshow1 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('date_created',1)></span></th>
+                        <th>Task</th>
+                        <th>DataSource <span ng-class="{'glyphicon-chevron-down' : m.sortshow2 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('type_name',2)></span></th>
+                        <th>Client <span ng-class="{'glyphicon-chevron-down' : m.sortshow3 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('company_name',3)></span></th>
+                        <th>Server <span ng-class="{'glyphicon-chevron-down' : m.sortshow4 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('svr_name',4)></span></th>
+                        <th>Target <span ng-class="{'glyphicon-chevron-down' : m.sortshow5 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('client_name',5)></span></th>
+                        <th>Mode <span ng-class="{'glyphicon-chevron-down' : m.sortshow6 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('schedule',6)></span></th>
+                        <th>Start <span ng-class="{'glyphicon-chevron-down' : m.sortshow7 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('date_start',7)></span></th>
+                        <th>End <span ng-class="{'glyphicon-chevron-down' : m.sortshow8 }" class='glyphicon glyphicon-chevron-up' ng-click=m.sort('date_end',8)></span></th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in m.scheduledata | filter:m.filter |orderBy:m.property_name:m.SortByDate">
+                        <td><span ng-bind='item.date_created.substring(0,10)'></span></td>
+                        <td><span ng-bind='item.task'></span></td>
+                        <td><span ng-bind='item.type_name'></span></td>
+                        <td><span ng-bind='item.company_name'></span></td>
+                        <td><span ng-bind='item.svr_name'></span></td>
+                        <td><span ng-bind='item.client_name'></span></td>
+                        <td><span ng-bind='item.schedule'></span></td>
+                        <td><span ng-bind='item.date_start.substring(0,10)'></span></td>
+                        <td><span ng-bind='item.date_end.substring(0,10)'></span></td>
+                        <td>
+                           <button class='btn btn-primary' ng-click="m.edit(item)">Etid</button>
+                           <button class='btn btn-primary' ng-click="m.del(item)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class='seperate-bar__div--20ht'></div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</body>

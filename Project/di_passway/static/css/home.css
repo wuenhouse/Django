@@ -1,0 +1,110 @@
+th{
+  //color:white;
+  font-size:14px;
+}
+.icon_btn{
+    margin:10px 0px 10px 0px;
+}
+.datefield{
+    width:200px;
+}
+.namefield{
+    width:200px;
+}
+.qtyfield{
+    width:50px;
+}
+.amtfield{
+    width:100px;
+}
+.btn_menu{
+  position:absolute;
+  z-index:3;
+}
+.btn_menu_list{
+  position:absolute;
+  z-index:4;
+}
+.menu{
+  width:230px;
+  height:800px;
+  background-color:#3399ff;
+  float: left;
+}
+.menu_float{
+    width:230px;
+    //background-color:#0052cc;
+    background-color:#3399ff;
+    position:absolute;
+    z-index:1;
+}
+.menu2{
+  margin-left:0px;
+  position:absolute;
+  //z-index:-1;
+  width:100%;
+  //background-color:#286090;
+  background-color:#0059b3;
+  float:left;
+}
+.wp-70{
+    width:70%;
+}
+.wp-90{
+    width:90%;
+}
+.text-white{
+    color:white;
+}
+.text__--r5px{
+    margin-right:5px;
+}
+.text__--l5px{
+    margin-left:5px;
+}
+.input-name__wd50p{
+    width:50%;
+}
+.input-name__l5px{
+    margin-left:5px;
+}
+.hoverr{
+    color:blue;
+}
+.search-bar__div--white{
+    width:100%; 
+    background-color:white;
+    margin-left:5px;
+}
+.search-bar__input--70wp{
+    width:70%;
+    margin:5px 0px 0px 5px;
+}
+.seperate-bar__div--20ht{
+    height:20px;
+}
+.table-left__5px{
+    margin:0px 0px 0px 5px;
+}
+.table-radio__left--5px{
+    margin:0px 0px 0px 5px;
+}
+.table-radio__upr--5px{
+    margin-left:5px;margin-right:5px;
+}
+.table-checkform{
+    width:80%;
+    background-color:white;
+    margin-left:5px;
+}
+.table-checkform__all{
+    width:100%;
+    background-color:white;
+    margin-left:5px;
+}
+.div__upl--5px{
+    margin:5px 0px 0px 5px;
+}
+.txt__mail--wp100{
+    width:100%;
+}

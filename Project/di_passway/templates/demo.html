@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Hadoop API Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
+    <link href="Index.css" rel="stylesheet" />
+    <link href="c3.min.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="Index.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="c3.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+</head>
+<body ng-controller="MainCtrl as m">
+    <form name="form1" >
+        <div>
+            <table>
+                <caption>dim-x：</caption>
+                <tr>
+                    <td>
+                        <select ng-model="m.Category" ng-options="color.name for color in m.colors" class="form-control little-select" ng-change="m.generateP()">
+                            <option value="">-- choose category --</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn bg-primary" ng-click="m.query()">Query</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <br />
+            <label style="font-size:16px;">API Url : <a href="{{m.API}}" target="_blank">{{m.API}}</a></label>
+        </div>
+        <div id="chart1"></div>
+    </form>
+</body>
+</html>
